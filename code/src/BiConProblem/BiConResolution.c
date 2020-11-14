@@ -55,7 +55,7 @@ void solution(BiConGraph *graph, int *liste_translator, int nb_convertisseurs, i
     }
 }
 
-//Algorithme brute force .
+//Algorithme brute force 
 bool BruteForceBiCon(BiConGraph *graph)
 {
     if (graph == NULL)
