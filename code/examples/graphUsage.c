@@ -25,7 +25,6 @@ int main(int argc, char* argv[]){
     printf(" There are %d edges.\n",sizeG(graph));
 
     //To show how to manipulate graphs with source and target.
-    /*
     printf("\n Note: all graphs provided will have a single source and single target.\n");
     int node;
     for(node=0;node<orderG(graph) && !isSource(graph,node);node++);
@@ -33,7 +32,6 @@ int main(int argc, char* argv[]){
   
     for(node=0;node<orderG(graph) && !isTarget(graph,node);node++);
     printf(" The target is %s.\n",getNodeName(graph,node));
-    */
 
     if(isEdge(graph,0,1)) printf(" There is an edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
     else printf("\n There is no edge between %s and %s.\n",getNodeName(graph,0),getNodeName(graph,1));
