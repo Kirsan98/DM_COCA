@@ -27,11 +27,31 @@ Z3_ast getVariableLevelInSpanningTree(Z3_context ctx, int level, int component){
 }
 
 Z3_ast BiConReduction(Z3_context ctx, BiConGraph biGraph, int size){
-    printf("Reduction not implemented\n");
+    char name[40];
+    //int x[biGraph.graph.numNodes][biGraph.graph.numNodes];  
+    for (int u = 0 ; u<biGraph.graph.numNodes; u++){
+        for(int i = 0 ; i<size ; i++){
+            snprintf(name,40,"x_[%d,%d]", u, i);
+            Z3_ast x =  mk_bool_var(ctx,name);
+            printf("Variable %s created.\n",Z3_ast_to_string(ctx,x));
+        }
+    }
+
+    for (int u = 0 ; u<biGraph.graph.numNodes; u++){
+        for (int u = 0 ; u<biGraph.graph.numNodes; u++){
+            
+        }
+    }
+
     return Z3_mk_true(ctx); 
 }
 
 void getTranslatorSetFromModel(Z3_context ctx, Z3_model model, BiConGraph *graph, int size){
+    if(model==NULL || graph == NULL){
+        fprintf(stderr,"getTranslatorSetFromModel : invalid graph or model\n");
+    }
+    // TODO
+    // valueOfVarInModel(ctx,model,variable);
     return;
 }
 

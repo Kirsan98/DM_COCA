@@ -60,10 +60,11 @@ bool BruteForceBiCon(BiConGraph *graph)
 {
     if (graph == NULL)
     {
+        fprintf(stderr,"BruteForceBiCoin : invalid graph given\n");
         return false;
     }
     int nb_sommets = graph->graph.numNodes;
-    int *liste_sommets = (int *)malloc(nb_sommets * sizeof(int));
+    int liste_sommets[nb_sommets];
     int size = 0;
     //On réalise un premier parcours pour récupérer les sommets hétérogènes
     for (int i = 0; i < nb_sommets; i++)
@@ -82,15 +83,15 @@ bool BruteForceBiCon(BiConGraph *graph)
 
     if (are_cc_connected(graph, liste_sommets, size) == false)
     {
+        printf("CC is not connected\n");
         return false;
     }
-    int *liste_translator = (int *)malloc(nb_sommets * sizeof(int));
-    int *result = (int *)malloc(nb_sommets * sizeof(int));
+    int liste_translator[nb_sommets];
+    int result[nb_sommets];
     int *result_size = (int *)malloc(sizeof(int));
     *result_size = MAX;
     for (int i = 0; i < size; i = i + 1)
     {
-
         solution(graph, liste_translator, 0, i, liste_sommets, size, result, result_size);
         if (*result_size == 1)
         {
@@ -103,8 +104,6 @@ bool BruteForceBiCon(BiConGraph *graph)
     {
         addTranslator(graph, result[i]);
     }
-    free(liste_sommets);
-    free(result);
     free(result_size);
     return true;
 }
